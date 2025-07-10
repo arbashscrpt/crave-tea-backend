@@ -27,3 +27,10 @@ app.post('/api/order', async (req, res) => {
 });
 
 app.listen(3000, () => console.log('Backend running on http://localhost:3000'));
+
+
+app.get('/api/orders', async (req, res) => {
+  const [orders] = await db.query('SELECT * FROM orders ORDER BY created_at DESC');
+  res.json(orders);
+});
+
